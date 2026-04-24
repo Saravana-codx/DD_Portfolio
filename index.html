@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>DesignDome — Ideas Meet Identity</title>
@@ -343,6 +344,70 @@ footer{background:var(--grey-dark);color:var(--cream);padding:64px 8vw 32px;}
   .team-grid{grid-template-columns:1fr;max-width:400px;}
   .process-step{grid-template-columns:1fr;gap:8px;}
   .process-num{font-size:2rem;padding-top:0;}
+}
+@media (max-width: 768px) {
+
+  body {
+    cursor: auto;
+  }
+
+  .cursor,
+  .cursor-ring {
+    display: none;
+  }
+
+  nav {
+    padding: 0 16px;
+  }
+
+  .nav-links {
+    gap: 12px;
+    font-size: 0.7rem;
+  }
+
+  section {
+    padding: 56px 18px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .portfolio-item,
+  .portfolio-item-link {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    justify-self: stretch !important;
+    margin-top: 0 !important;
+  }
+
+  .portfolio-img {
+    width: 100% !important;
+    height: 240px !important;
+    min-height: 240px !important;
+    border-radius: 16px !important;
+  }
+
+  .portfolio-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+  }
+
+  .portfolio-overlay {
+    opacity: 1;
+    padding: 20px;
+  }
+
+  .po-title {
+    font-size: 1.25rem;
+  }
+
+  .po-tag,
+  .po-tech {
+    font-size: 0.65rem;
+  }
 }
 </style>
 </head>
