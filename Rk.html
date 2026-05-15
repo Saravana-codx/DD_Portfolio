@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RN Foods - Organic & Hygienic Malts | ABC Malt, Beetroot Malt, Carrot Malt Online</title>
+    <meta name="description" content="Buy 100% organic and hygienic malts online from RN Foods. ABC Malt, Beetroot Malt, Carrot Malt, Protein Rich Health Mix, Red Banana Milk, Sprouted Ragi Chocolate & Cow Ghee.">
+    <meta name="keywords" content="RN Foods, ABC Malt, Beetroot Malt, Carrot Malt, organic malt, healthy malt, protein health mix, red banana milk, ragi chocolate, cow ghee, organic food India">
+    <meta name="author" content="RN Foods">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RN Foods - Organic & Hygienic Malts">
+    <meta property="og:description" content="100% Organic and Hygienic malts. Healthy, Natural, Homemade quality products.">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "RN Foods",
+        "description": "Organic & Hygienic Malts and Health Products",
+        "telephone": "+91-9902635453",
+        "address": {"@type": "PostalAddress", "addressCountry": "IN"}
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #2d8659;
+            --primary-dark: #1f5f3f;
+            --primary-light: #4ade80;
+            --accent: #f59e0b;
+            --accent-dark: #d97706;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --danger: #ef4444;
+            --success: #10b981;
+            --gradient: linear-gradient(135deg, #2d8659, #1f5f3f);
+            --gradient-warm: linear-gradient(135deg, #f59e0b, #d97706);
+            --gradient-hero: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; line-height: 1.6; color: var(--dark); background: #fefefe; }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(10px);
+            padding: 0.9rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+        .logo { display: flex; align-items: center; gap: 0.6rem; cursor: pointer; }
+        .logo-icon {
+            width: 44px; height: 44px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.1rem; font-weight: 800;
+            box-shadow: 0 4px 12px rgba(45,134,89,0.3);
+        }
+        .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+        .logo-text span:first-child { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+        .logo-text span:last-child { font-size: 0.65rem; color: var(--gray); font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
+        .nav-links { display: flex; list-style: none; gap: 0.3rem; align-items: center; }
+        .nav-links a {
+            text-decoration: none; color: var(--dark); font-weight: 500;
+            cursor: pointer; transition: all 0.3s; padding: 0.5rem 0.9rem;
+            border-radius: 20px; font-size: 0.95rem;
+        }
+        .nav-links a:hover { color: var(--primary); background: #f0fdf4; }
+        .nav-links a.active { color: var(--primary); background: #dcfce7; font-weight: 600; }
+        .cart-nav-btn {
+            background: var(--gradient) !important;
+            color: white !important;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 25px !important;
+            display: flex; align-items: center; gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(45,134,89,0.3);
+        }
+        .cart-nav-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(45,134,89,0.4) !important; background: var(--gradient) !important; }
+        .cart-count {
+            background: var(--accent); color: white;
+            border-radius: 50%; width: 20px; height: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: 700;
+        }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .hamburger span { width: 25px; height: 2.5px; background: var(--dark); transition: 0.3s; border-radius: 2px; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+
+        /* ===== PAGES ===== */
+        .page { display: none; min-height: 100vh; padding-top: 72px; }
+        .page.active { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 0.85rem 1.8rem; border: none; border-radius: 30px;
+            font-size: 0.95rem; font-weight: 600; cursor: pointer;
+            transition: all 0.3s; text-decoration: none; display: inline-block;
+        }
+        .btn-primary { background: var(--gradient); color: white; box-shadow: 0 4px 15px rgba(45,134,89,0.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(45,134,89,0.4); }
+        .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.7); }
+        .btn-outline:hover { background: white; color: var(--primary); }
+        .btn-accent { background: var(--gradient-warm); color: white; box-shadow: 0 4px 15px rgba(245,158,11,0.3); }
+        .btn-accent:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(245,158,11,0.4); }
+
+        /* ===================================================================
+           HOME PAGE
+        =================================================================== */
+
+        /* ===== HERO ===== */
+        .hero {
+            background: var(--gradient-hero);
+            min-height: 92vh;
+            display: flex; align-items: center;
+            padding: 4rem 5% 3rem;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: -100px; right: -100px;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero::after {
+            content: '';
+            position: absolute; bottom: -80px; left: -80px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(74,222,128,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+        .hero-label {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(255,255,255,0.1); color: #86efac;
+            padding: 0.45rem 1rem; border-radius: 25px;
+            font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.15); letter-spacing: 0.5px;
+        }
+        .hero h1 { font-size: 3.4rem; line-height: 1.15; color: white; margin-bottom: 1.2rem; font-weight: 800; }
+        .hero h1 .highlight { color: #86efac; }
+        .hero-desc { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 2rem; max-width: 500px; }
+        .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+        .hero-stats { display: flex; gap: 2.5rem; }
+        .hero-stat { text-align: center; }
+        .hero-stat-num { font-size: 1.8rem; font-weight: 800; color: #86efac; }
+        .hero-stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+        .hero-visual { display: flex; flex-direction: column; gap: 1.2rem; }
+        .hero-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            border-radius: 20px; padding: 1.5rem;
+            display: flex; align-items: center; gap: 1.2rem;
+            transition: all 0.3s; cursor: pointer;
+        }
+        .hero-card:hover { background: rgba(255,255,255,0.14); transform: translateX(5px); }
+        .hero-card-icon { font-size: 2.5rem; }
+        .hero-card-text { color: white; }
+        .hero-card-text h4 { font-size: 1rem; margin-bottom: 0.2rem; }
+        .hero-card-text p { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+        .hero-card-arrow { margin-left: auto; color: rgba(255,255,255,0.5); font-size: 1.2rem; }
+
+        /* ===== FEATURES STRIP ===== */
+        .features-strip {
+            background: white;
+            padding: 2.5rem 5%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        .features-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+        .feature-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; border-radius: 12px; transition: background 0.3s; }
+        .feature-item:hover { background: #f0fdf4; }
+        .feature-icon-box { width: 48px; height: 48px; background: #dcfce7; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+        .feature-text h4 { font-size: 0.95rem; color: var(--dark); margin-bottom: 0.1rem; }
+        .feature-text p { font-size: 0.8rem; color: var(--gray); }
+
+        /* ===== SECTION STYLES ===== */
+        .section-tag { display: inline-block; background: #dcfce7; color: var(--primary); padding: 0.35rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.8rem; letter-spacing: 0.5px; text-transform: uppercase; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: 2.4rem; margin-bottom: 0.8rem; color: var(--dark); font-weight: 800; }
+        .section-header p { color: var(--gray); max-width: 580px; margin: 0 auto; font-size: 1.05rem; }
+
+        /* ===== PRODUCTS SECTION ===== */
+        .products-section { padding: 5rem 5%; max-width: 1300px; margin: 0 auto; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.8rem; }
+        .product-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: all 0.35s; border: 1px solid #f3f4f6; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); border-color: #bbf7d0; }
+        .product-image { height: 240px; background: linear-gradient(135deg, #f0fdf4, #dcfce7); display: flex; align-items: center; justify-content: center; font-size: 6rem; position: relative; }
+        .product-badge { position: absolute; top: 1rem; right: 1rem; background: var(--accent); color: white; padding: 0.3rem 0.7rem; border-radius: 15px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px; }
+        .product-info { padding: 1.5rem; }
+        .product-info h3 { font-size: 1.15rem; margin-bottom: 0.4rem; color: var(--dark); }
+        .product-info .desc { color: var(--gray); font-size: 0.88rem; margin-bottom: 1rem; min-height: 38px; }
+        .product-price { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+        .price-now { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+        .price-old { text-decoration: line-through; color: var(--gray); font-size: 0.95rem; }
+        .discount { background: #fef3c7; color: #92400e; padding: 0.2rem 0.5rem; border-radius: 8px; font-size: 0.72rem; font-weight: 700; }
+        .product-info .btn { width: 100%; text-align: center; padding: 0.75rem; font-size: 0.9rem; }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials { background: #f0fdf4; padding: 5rem 5%; }
+        .testimonials-inner { max-width: 1200px; margin: 0 auto; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .testi-card { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 4px solid var(--primary); }
+        .testi-stars { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.8rem; }
+        .testi-text { color: var(--gray); font-size: 0.95rem; font-style: italic; margin-bottom: 1.2rem; line-height: 1.7; }
+        .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+        .testi-avatar { width: 42px; height: 42px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1rem; }
+        .testi-name strong { display: block; font-size: 0.95rem; }
+        .testi-name span { color: var(--gray); font-size: 0.82rem; }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+        .step-card { text-align: center; padding: 2.5rem 1.5rem; background: white; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); position: relative; border-top: 4px solid var(--primary); }
+        .step-num { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); width: 36px; height: 36px; background: var(--gradient); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; }
+        .step-icon { font-size: 3rem; margin: 0.5rem 0 1rem; }
+        .step-card h3 { color: var(--primary); margin-bottom: 0.5rem; }
+        .step-card p { color: var(--gray); font-size: 0.9rem; }
+
+        /* ===== CTA BANNER ===== */
+        .cta-banner { background: var(--gradient-hero); padding: 5rem 5%; text-align: center; margin: 4rem 0; }
+        .cta-banner-inner { max-width: 700px; margin: 0 auto; }
+        .cta-banner h2 { font-size: 2.5rem; color: white; margin-bottom: 1rem; font-weight: 800; }
+        .cta-banner p { color: rgba(255,255,255,0.85); margin-bottom: 2rem; font-size: 1.1rem; }
+        .cta-banner-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* ===================================================================
+           BENEFITS PAGE
+        =================================================================== */
+        .benefits-hero { background: linear-gradient(135deg, #14532d 0%, #166534 100%); padding: 5rem 5%; text-align: center; }
+        .benefits-hero h1 { font-size: 3rem; color: white; margin-bottom: 1rem; font-weight: 800; }
+        .benefits-hero p { color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+
+        .benefits-content { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+        .benefits-main-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
+        .benefit-big-card { background: white; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: all 0.35s; }
+        .benefit-big-card:hover { transform: translateY(-6px); box-shadow: 0 16px 50px rgba(0,0,0,0.12); }
+        .benefit-big-header { padding: 2rem; color: white; }
+        .benefit-big-header .big-icon { font-size: 3rem; margin-bottom: 0.8rem; }
+        .benefit-big-header h3 { font-size: 1.5rem; margin-bottom: 0.4rem; }
+        .benefit-big-header p { opacity: 0.9; font-size: 0.95rem; }
+        .benefit-big-body { padding: 1.5rem 2rem; }
+        .benefit-list { list-style: none; }
+        .benefit-list li { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.6rem 0; border-bottom: 1px solid #f3f4f6; color: var(--gray); font-size: 0.95rem; }
+        .benefit-list li:last-child { border-bottom: none; }
+        .benefit-list li::before { content: '✓'; color: var(--success); font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
+
+        .nutrients-section { padding: 4rem 5%; background: #f0fdf4; }
+        .nutrients-inner { max-width: 1200px; margin: 0 auto; }
+        .nutrients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; }
+        .nutrient-card { background: white; border-radius: 16px; padding: 1.5rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.06); border-bottom: 4px solid var(--primary); }
+        .nutrient-emoji { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .nutrient-card h4 { color: var(--primary); margin-bottom: 0.3rem; font-size: 1rem; }
+        .nutrient-card p { color: var(--gray); font-size: 0.85rem; }
+
+        .health-numbers { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+        .numbers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+        .number-card { text-align: center; padding: 2.5rem 1.5rem; background: var(--gradient); border-radius: 20px; color: white; }
+        .number-card .big-num { font-size: 3rem; font-weight: 800; margin-bottom: 0.3rem; }
+        .number-card p { opacity: 0.9; font-size: 0.95rem; }
+
+        /* ===================================================================
+           HOW WE MAKE PAGE
+        =================================================================== */
+        .howmake-hero { background: linear-gradient(135deg, #78350f 0%, #92400e 100%); padding: 5rem 5%; text-align: center; }
+        .howmake-hero h1 { font-size: 3rem; color: white; margin-bottom: 1rem; font-weight: 800; }
+        .howmake-hero p { color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+
+        .process-section { padding: 5rem 5%; max-width: 1100px; margin: 0 auto; }
+        .process-timeline { position: relative; }
+        .process-timeline::before { content: ''; position: absolute; left: 35px; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--primary), var(--accent)); border-radius: 2px; }
+        .process-step { display: flex; gap: 2rem; margin-bottom: 3rem; position: relative; }
+        .process-step-num { width: 70px; height: 70px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 1.5rem; flex-shrink: 0; z-index: 1; box-shadow: 0 4px 15px rgba(45,134,89,0.3); }
+        .process-step-content { background: white; border-radius: 20px; padding: 2rem; flex: 1; box-shadow: 0 4px 20px rgba(0,0,0,0.07); border-left: 4px solid var(--primary); }
+        .process-step-content .step-icon-big { font-size: 2rem; margin-bottom: 0.8rem; }
+        .process-step-content h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 0.6rem; }
+        .process-step-content p { color: var(--gray); line-height: 1.7; }
+        .process-step-content .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+        .tag { background: #dcfce7; color: var(--primary); padding: 0.25rem 0.7rem; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
+
+        .certifications { background: #fffbeb; padding: 4rem 5%; }
+        .cert-inner { max-width: 1200px; margin: 0 auto; }
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+        .cert-card { background: white; border-radius: 16px; padding: 2rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-top: 4px solid var(--accent); }
+        .cert-icon { font-size: 3rem; margin-bottom: 0.8rem; }
+        .cert-card h4 { color: var(--dark); margin-bottom: 0.4rem; }
+        .cert-card p { color: var(--gray); font-size: 0.88rem; }
+
+        .ingredients-section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+        .ingredients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+        .ingredient-card { background: white; border-radius: 16px; padding: 1.8rem; box-shadow: 0 4px 15px rgba(0,0,0,0.06); display: flex; gap: 1rem; align-items: flex-start; transition: all 0.3s; border: 1px solid #f3f4f6; }
+        .ingredient-card:hover { border-color: #bbf7d0; transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .ingredient-emoji { font-size: 2.5rem; flex-shrink: 0; }
+        .ingredient-info h4 { color: var(--dark); margin-bottom: 0.3rem; }
+        .ingredient-info p { color: var(--gray); font-size: 0.87rem; }
+
+        /* ===================================================================
+           ABOUT PAGE
+        =================================================================== */
+        .about-hero { background: var(--gradient); color: white; padding: 5rem 5%; text-align: center; }
+        .about-hero h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 800; }
+        .about-content { padding: 5rem 5%; max-width: 1100px; margin: 0 auto; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 5rem; }
+        .about-text h2 { font-size: 2.2rem; color: var(--primary); margin-bottom: 1rem; }
+        .about-text p { color: var(--gray); margin-bottom: 1rem; font-size: 1.05rem; }
+        .about-box { background: var(--gradient); border-radius: 24px; padding: 3rem; text-align: center; color: white; min-height: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; }
+        .about-box .big-em { font-size: 5rem; }
+        .about-box h3 { font-size: 1.8rem; }
+        .about-box p { opacity: 0.9; }
+
+        /* ===================================================================
+           SHOP PAGE
+        =================================================================== */
+        .shop-header { background: linear-gradient(135deg, #f0fdf4, #dcfce7); padding: 4rem 5% 3rem; text-align: center; }
+        .shop-header h1 { font-size: 2.8rem; color: var(--dark); margin-bottom: 0.5rem; }
+        .shop-header p { color: var(--gray); }
+
+        /* ===================================================================
+           CART PAGE
+        =================================================================== */
+        .cart-page-content { padding: 3rem 5%; max-width: 1100px; margin: 0 auto; }
+        .cart-page-content h1 { margin-bottom: 2rem; font-size: 2rem; }
+        .cart-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+        .cart-items { background: white; border-radius: 20px; padding: 1.8rem; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+        .cart-item { display: grid; grid-template-columns: 80px 1fr auto; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid #f3f4f6; align-items: center; }
+        .cart-item:last-child { border-bottom: none; }
+        .cart-item-img { width: 80px; height: 80px; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+        .cart-item-info h4 { margin-bottom: 0.25rem; font-size: 1rem; }
+        .cart-item-info .price { color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; }
+        .qty-controls { display: flex; align-items: center; gap: 0.5rem; }
+        .qty-btn { width: 30px; height: 30px; border: 1.5px solid var(--primary); background: white; color: var(--primary); border-radius: 50%; cursor: pointer; font-weight: 700; transition: all 0.2s; }
+        .qty-btn:hover { background: var(--primary); color: white; }
+        .qty-display { font-weight: 700; min-width: 28px; text-align: center; }
+        .remove-btn { background: #fee2e2; color: var(--danger); border: none; padding: 0.45rem 0.9rem; border-radius: 20px; cursor: pointer; font-size: 0.82rem; font-weight: 600; transition: all 0.2s; }
+        .remove-btn:hover { background: var(--danger); color: white; }
+        .cart-summary { background: white; border-radius: 20px; padding: 1.8rem; box-shadow: 0 4px 20px rgba(0,0,0,0.07); height: fit-content; position: sticky; top: 90px; }
+        .cart-summary h3 { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid #f3f4f6; }
+        .summary-row { display: flex; justify-content: space-between; padding: 0.55rem 0; color: var(--gray); font-size: 0.95rem; }
+        .summary-row.total { font-weight: 700; color: var(--dark); font-size: 1.2rem; border-top: 2px solid #f3f4f6; margin-top: 0.5rem; padding-top: 1rem; }
+        .summary-row.total span:last-child { color: var(--primary); }
+        .cart-summary .btn { width: 100%; text-align: center; margin-top: 1rem; }
+        .empty-cart { text-align: center; padding: 5rem 2rem; }
+        .empty-cart-icon { font-size: 5rem; margin-bottom: 1rem; opacity: 0.5; }
+        .empty-cart h2 { color: var(--gray); margin-bottom: 0.5rem; }
+        .empty-cart p { color: var(--gray); margin-bottom: 2rem; }
+        .free-ship-note { background: #f0fdf4; border-radius: 10px; padding: 0.7rem; text-align: center; font-size: 0.85rem; color: var(--primary); margin-top: 0.8rem; }
+
+        /* ===================================================================
+           CHECKOUT PAGE
+        =================================================================== */
+        .checkout-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem; }
+        .checkout-form { background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+        .checkout-form h3 { margin-bottom: 1.5rem; color: var(--primary); padding-bottom: 0.8rem; border-bottom: 2px solid #f3f4f6; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .form-group { margin-bottom: 1.1rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; color: var(--dark); font-size: 0.9rem; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.8rem 1rem; border: 2px solid #e5e7eb; border-radius: 10px; font-size: 0.95rem; font-family: inherit; transition: all 0.3s; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--primary); background: #f0fdf4; }
+        .payment-method-box { background: linear-gradient(135deg, #f0fdf4, #dcfce7); padding: 1.5rem; border-radius: 14px; margin-top: 1.5rem; border: 2px solid var(--primary); }
+        .payment-method-box h4 { color: var(--primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem; }
+        .payment-method-box p { font-size: 0.88rem; color: var(--gray); }
+
+        /* ===================================================================
+           PAYMENT MODAL
+        =================================================================== */
+        .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.75); z-index: 2000; align-items: center; justify-content: center; padding: 1rem; }
+        .modal.active { display: flex; }
+        .modal-content { background: white; border-radius: 24px; padding: 2.5rem; max-width: 460px; width: 100%; text-align: center; animation: modalIn 0.3s; }
+        @keyframes modalIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal-icon { font-size: 3.5rem; margin-bottom: 0.8rem; }
+        .modal h2 { margin-bottom: 0.5rem; font-size: 1.6rem; }
+        .modal-amount { font-size: 2.2rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; }
+        .modal > p { color: var(--gray); margin-bottom: 1.5rem; font-size: 0.9rem; }
+        .qr-container { background: #f9fafb; padding: 1.5rem; border-radius: 16px; margin: 1rem 0; }
+        .qr-placeholder { width: 170px; height: 170px; background: white; border: 2px dashed var(--primary); border-radius: 12px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--primary); }
+        .qr-container p { font-size: 0.85rem; color: var(--gray); margin-bottom: 0.5rem; }
+        .upi-id { font-weight: 700; color: var(--primary); font-size: 1.05rem; background: white; padding: 0.5rem 1.2rem; border-radius: 8px; display: inline-block; border: 1.5px solid var(--primary); }
+        .gpay-btn { background: #1a73e8; color: white; border: none; padding: 0.9rem 2rem; border-radius: 30px; font-size: 1rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.6rem; transition: all 0.3s; margin-top: 1rem; }
+        .gpay-btn:hover { background: #1557b0; transform: translateY(-2px); }
+        .modal-warning { font-size: 0.82rem; color: var(--gray); margin-top: 1rem; background: #fef9c3; padding: 0.6rem; border-radius: 8px; }
+        .modal-buttons { display: flex; gap: 0.8rem; margin-top: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .btn-confirm { background: var(--success); color: white; border: none; border-radius: 30px; padding: 0.8rem 1.6rem; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .btn-confirm:hover { background: #059669; transform: translateY(-2px); }
+        .btn-cancel { background: #f3f4f6; color: var(--gray); border: none; border-radius: 30px; padding: 0.8rem 1.6rem; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .btn-cancel:hover { background: #e5e7eb; }
+
+        /* ===================================================================
+           SUCCESS PAGE
+        =================================================================== */
+        .success-page { text-align: center; padding: 4rem 2rem; max-width: 650px; margin: 0 auto; }
+        .success-icon-ring { width: 110px; height: 110px; background: linear-gradient(135deg, var(--success), #34d399); border-radius: 50%; margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: white; animation: successPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 8px 30px rgba(16,185,129,0.35); }
+        @keyframes successPop { 0% { transform: scale(0); opacity: 0; } 70% { transform: scale(1.15); } 100% { transform: scale(1); opacity: 1; } }
+        .success-page h1 { font-size: 2.2rem; color: var(--dark); margin-bottom: 0.5rem; }
+        .success-page > p { color: var(--gray); margin-bottom: 2rem; }
+        .order-details-box { background: #f9fafb; padding: 2rem; border-radius: 20px; margin: 2rem 0; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .order-details-box h3 { color: var(--primary); margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 2px solid #e5e7eb; }
+        .order-info-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 0.55rem 0; border-bottom: 1px solid #f3f4f6; font-size: 0.95rem; }
+        .order-info-row:last-child { border-bottom: none; }
+        .order-info-row strong { color: var(--gray); font-weight: 500; flex-shrink: 0; }
+        .order-info-row span { color: var(--dark); font-weight: 500; text-align: right; max-width: 300px; }
+        .order-total-row { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+        .paid-badge { background: #dcfce7; color: var(--success); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+        .success-note { background: #f0fdf4; padding: 1.2rem; border-radius: 12px; color: var(--gray); font-size: 0.9rem; line-height: 1.8; margin-bottom: 2rem; }
+
+        /* ===== TOAST ===== */
+        .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--dark); color: white; padding: 0.9rem 1.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 3000; transform: translateX(150%); transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-size: 0.9rem; display: flex; align-items: center; gap: 0.6rem; max-width: 300px; }
+        .toast.show { transform: translateX(0); }
+
+        /* ===== FOOTER ===== */
+        .footer { background: #0f172a; color: white; padding: 4rem 5% 2rem; margin-top: 5rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto 3rem; }
+        .footer-logo { font-size: 1.5rem; font-weight: 800; color: #86efac; margin-bottom: 0.8rem; }
+        .footer-section p { color: #94a3b8; font-size: 0.9rem; line-height: 1.7; }
+        .footer-section h4 { margin-bottom: 1.2rem; color: #f0fdf4; font-size: 0.95rem; letter-spacing: 0.5px; }
+        .footer-section a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 0.6rem; cursor: pointer; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-section a:hover { color: #86efac; }
+        .footer-contact-item { display: flex; align-items: center; gap: 0.6rem; color: #94a3b8; font-size: 0.9rem; margin-bottom: 0.6rem; }
+        .footer-bottom { border-top: 1px solid #1e293b; padding-top: 2rem; text-align: center; color: #64748b; font-size: 0.85rem; max-width: 1200px; margin: 0 auto; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-inner, .about-grid { grid-template-columns: 1fr; }
+            .hero { min-height: auto; padding: 5rem 5% 4rem; }
+            .hero h1 { font-size: 2.6rem; }
+            .cart-grid, .checkout-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .features-inner { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 640px) {
+            .nav-links { position: fixed; top: 72px; left: 0; right: 0; background: white; flex-direction: column; padding: 1.5rem 2rem; gap: 0.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-150%); transition: transform 0.35s; z-index: 999; }
+            .nav-links.open { transform: translateY(0); }
+            .hamburger { display: flex; }
+            .hero h1 { font-size: 2rem; }
+            .section-header h2, .benefits-hero h1, .howmake-hero h1, .about-hero h1, .shop-header h1 { font-size: 2rem; }
+            .features-inner { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .cart-item { grid-template-columns: 60px 1fr; }
+            .cart-item .remove-btn { grid-column: 1 / -1; width: fit-content; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-contact-item { justify-content: center; }
+            .process-timeline::before { left: 28px; }
+            .process-step-num { width: 56px; height: 56px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+    <div class="logo" onclick="navigateTo('home')">
+        <div class="logo-icon">RN</div>
+        <div class="logo-text">
+            <span>RN Foods</span>
+            <span>Organic & Hygienic</span>
+        </div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+        <li><a onclick="navigateTo('home')" data-page="home" class="active">Home</a></li>
+        <li><a onclick="navigateTo('shop')" data-page="shop">Shop</a></li>
+        <li><a onclick="navigateTo('benefits')" data-page="benefits">Benefits</a></li>
+        <li><a onclick="navigateTo('howmade')" data-page="howmade">How We Make</a></li>
+        <li><a onclick="navigateTo('about')" data-page="about">About</a></li>
+        <li><a onclick="navigateTo('cart')" class="cart-nav-btn">
+            🛒 Cart <span class="cart-count" id="cartCount">0</span>
+        </a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ================================================================
+     HOME PAGE
+================================================================ -->
+<div class="page active" id="home">
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-left">
+                <div class="hero-label">🌿 100% Organic & Hygienic</div>
+                <h1>Nourish Your Body With <span class="highlight">Pure Nature's</span> Best</h1>
+                <p class="hero-desc">Handcrafted malts and health mixes made from the finest organic ingredients. No preservatives, no additives — just pure goodness in every sip.</p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary" onclick="navigateTo('shop')">Shop Now 🛍️</button>
+                    <button class="btn btn-outline" onclick="navigateTo('benefits')">See Benefits</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Organic</div></div>
+                    <div class="hero-stat"><div class="hero-stat-num">6+</div><div class="hero-stat-label">Products</div></div>
+                    <div class="hero-stat"><div class="hero-stat-num">500+</div><div class="hero-stat-label">Happy Customers</div></div>
+                    <div class="hero-stat"><div class="hero-stat-num">0</div><div class="hero-stat-label">Preservatives</div></div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card" onclick="navigateTo('shop')">
+                    <div class="hero-card-icon">🍎</div>
+                    <div class="hero-card-text">
+                        <h4>ABC Malt</h4>
+                        <p>Apple • Beetroot • Carrot + Nuts</p>
+                    </div>
+                    <div class="hero-card-arrow">→</div>
+                </div>
+                <div class="hero-card" onclick="navigateTo('shop')">
+                    <div class="hero-card-icon">🌾</div>
+                    <div class="hero-card-text">
+                        <h4>Protein Rich Health Mix</h4>
+                        <p>44 Power Ingredients</p>
+                    </div>
+                    <div class="hero-card-arrow">→</div>
+                </div>
+                <div class="hero-card" onclick="navigateTo('shop')">
+                    <div class="hero-card-icon">🧈</div>
+                    <div class="hero-card-text">
+                        <h4>Pure Cow Ghee</h4>
+                        <p>Traditional Bilona Method</p>
+                    </div>
+                    <div class="hero-card-arrow">→</div>
+                </div>
+                <div class="hero-card" onclick="navigateTo('shop')">
+                    <div class="hero-card-icon">🥕</div>
+                    <div class="hero-card-text">
+                        <h4>Carrot & Beetroot Malts</h4>
+                        <p>Rich in Vitamins & Antioxidants</p>
+                    </div>
+                    <div class="hero-card-arrow">→</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES STRIP -->
+    <div class="features-strip">
+        <div class="features-inner">
+            <div class="feature-item">
+                <div class="feature-icon-box">🌱</div>
+                <div class="feature-text"><h4>100% Organic</h4><p>No chemicals or pesticides</p></div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon-box">🏠</div>
+                <div class="feature-text"><h4>Homemade Quality</h4><p>Traditional recipes</p></div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon-box">🚚</div>
+                <div class="feature-text"><h4>Fast Delivery</h4><p>Safe & quick shipping</p></div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon-box">🔒</div>
+                <div class="feature-text"><h4>Secure Payment</h4><p>GPay & UPI accepted</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BEST SELLERS -->
+    <section class="products-section">
+        <div class="section-header">
+            <div class="section-tag">⭐ Customer Favourites</div>
+            <h2>Our Best Selling Products</h2>
+            <p>Loved by hundreds of healthy families across Tamil Nadu</p>
+        </div>
+        <div class="products-grid" id="featuredProducts"></div>
+        <div style="text-align:center; margin-top:3rem;">
+            <button class="btn btn-primary" onclick="navigateTo('shop')">View All Products →</button>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="how-section">
+        <div class="section-header">
+            <div class="section-tag">💚 Why RN Foods</div>
+            <h2>What Makes Us Different</h2>
+            <p>We put health first in everything we do</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card"><div class="step-num">1</div><div class="step-icon">🌿</div><h3>Pure Sourcing</h3><p>We source only the finest organic ingredients directly from trusted farmers.</p></div>
+            <div class="step-card"><div class="step-num">2</div><div class="step-icon">🧹</div><h3>Hygienic Process</h3><p>Prepared in a clean, certified kitchen with strict quality controls.</p></div>
+            <div class="step-card"><div class="step-num">3</div><div class="step-icon">⚖️</div><h3>Perfect Balance</h3><p>Every product is formulated for maximum nutrition and great taste.</p></div>
+            <div class="step-card"><div class="step-num">4</div><div class="step-icon">📦</div><h3>Safe Packaging</h3><p>Airtight, moisture-proof packaging to preserve freshness and quality.</p></div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div class="testimonials-inner">
+            <div class="section-header">
+                <div class="section-tag">❤️ Customer Love</div>
+                <h2>What Our Customers Say</h2>
+                <p>Real reviews from real, healthy families</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">"The ABC Malt is absolutely amazing! My kids love it and I feel good knowing it's 100% natural. No more worrying about artificial flavors."</p>
+                    <div class="testi-author"><div class="testi-avatar">P</div><div class="testi-name"><strong>Priya Ramesh</strong><span>Chennai, Tamil Nadu</span></div></div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">"I've been using the Protein Health Mix for 2 months. My energy levels have improved so much. Pure, clean, and effective!"</p>
+                    <div class="testi-author"><div class="testi-avatar">K</div><div class="testi-name"><strong>Karthik Subramanian</strong><span>Coimbatore, Tamil Nadu</span></div></div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">"The Cow Ghee is so pure and aromatic. You can taste the difference immediately. RN Foods has become our household go-to!"</p>
+                    <div class="testi-author"><div class="testi-avatar">S</div><div class="testi-name"><strong>Sumitha Kannan</strong><span>Madurai, Tamil Nadu</span></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+        <div class="cta-banner-inner">
+            <div class="section-tag" style="background:rgba(255,255,255,0.15); color:white;">🎉 Limited Time Offer</div>
+            <h2>Start Your Healthy Journey Today</h2>
+            <p>Get free shipping on orders above ₹500. Freshness guaranteed with every order.</p>
+            <div class="cta-banner-btns">
+                <button class="btn btn-outline" onclick="navigateTo('shop')" style="border-color:white; color:white;">Shop Now</button>
+                <button class="btn" style="background:white; color:var(--primary); font-weight:700;" onclick="navigateTo('benefits')">See Health Benefits</button>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- ================================================================
+     SHOP PAGE
+================================================================ -->
+<div class="page" id="shop">
+    <div class="shop-header">
+        <div class="section-tag">🛍️ All Products</div>
+        <h1>Our Products</h1>
+        <p>Premium organic malts and health products — pure, natural, homemade</p>
+    </div>
+    <section class="products-section">
+        <div class="products-grid" id="allProducts"></div>
+    </section>
+</div>
+
+<!-- ================================================================
+     BENEFITS PAGE
+================================================================ -->
+<div class="page" id="benefits">
+    <section class="benefits-hero">
+        <div class="section-tag" style="background:rgba(255,255,255,0.15); color:#86efac;">💚 Health First</div>
+        <h1>Benefits of Our Products</h1>
+        <p>Every product from RN Foods is packed with nature's most powerful nutrients to fuel your body, mind, and spirit.</p>
+    </section>
+
+    <section class="benefits-content">
+        <div class="section-header" style="margin-top:1rem;">
+            <div class="section-tag">🌿 Product Benefits</div>
+            <h2>What Each Product Does For You</h2>
+            <p>Discover the incredible health benefits hidden in every spoonful</p>
+        </div>
+        <div class="benefits-main-grid">
+            <div class="benefit-big-card">
+                <div class="benefit-big-header" style="background: linear-gradient(135deg,#b91c1c,#dc2626);">
+                    <div class="big-icon">🍎</div>
+                    <h3>ABC Malt</h3>
+                    <p>Apple • Beetroot • Carrot Power</p>
+                </div>
+                <div class="benefit-big-body">
+                    <ul class="benefit-list">
+                        <li>Boosts immunity with natural Vitamin C from apple</li>
+                        <li>Improves blood circulation and hemoglobin levels</li>
+                        <li>Enhances eyesight and skin glow with beta-carotene</li>
+                        <li>Natural energy booster — great for morning intake</li>
+                        <li>Supports digestion with natural fiber content</li>
+                        <li>Helps reduce blood pressure naturally</li>
+                        <li>Nut-rich formula provides healthy fats and protein</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="benefit-big-card">
+                <div class="benefit-big-header" style="background: linear-gradient(135deg,#7e22ce,#9333ea);">
+                    <div class="big-icon">🟣</div>
+                    <h3>Beetroot Malt</h3>
+                    <p>Iron-Rich Natural Powerhouse</p>
+                </div>
+                <div class="benefit-big-body">
+                    <ul class="benefit-list">
+                        <li>Naturally rich in iron — combats anemia effectively</li>
+                        <li>Lowers blood pressure and supports heart health</li>
+                        <li>Improves blood flow and athletic stamina</li>
+                        <li>Powerful antioxidants fight free radicals</li>
+                        <li>Reduces bloating and supports gut health</li>
+                        <li>Natural detoxifier — cleanses the liver</li>
+                        <li>Anti-inflammatory properties reduce body pain</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="benefit-big-card">
+                <div class="benefit-big-header" style="background: linear-gradient(135deg,#b45309,#d97706);">
+                    <div class="big-icon">🥕</div>
+                    <h3>Carrot Malt</h3>
+                    <p>Vision & Skin Health Champion</p>
+                </div>
+                <div class="benefit-big-body">
+                    <ul class="benefit-list">
+                        <li>Rich in beta-carotene for healthy, sharp eyesight</li>
+                        <li>Promotes naturally glowing skin from within</li>
+                        <li>Strengthens teeth and bones with calcium content</li>
+                        <li>Supports a healthy heart with potassium</li>
+                        <li>Natural protein supplement from almonds & walnuts</li>
+                        <li>Boosts the immune system with Vitamin A & C</li>
+                        <li>Cardamom aids digestion and freshens breath</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="benefit-big-card">
+                <div class="benefit-big-header" style="background: linear-gradient(135deg,#065f46,#047857);">
+                    <div class="big-icon">🌾</div>
+                    <h3>Protein Rich Health Mix</h3>
+                    <p>44 Ingredients of Pure Power</p>
+                </div>
+                <div class="benefit-big-body">
+                    <ul class="benefit-list">
+                        <li>44 carefully selected grains, seeds, and nuts</li>
+                        <li>Rich in Vitamins B3, B6, K, C and E</li>
+                        <li>High protein content builds and repairs muscles</li>
+                        <li>Provides all-day sustained energy without crashes</li>
+                        <li>Perfect for growing children, athletes & elderly</li>
+                        <li>Improves bone density and joint health</li>
+                        <li>Boosts brain function and mental clarity</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="benefit-big-card">
+                <div class="benefit-big-header" style="background: linear-gradient(135deg,#854d0e,#a16207);">
+                    <div class="big-icon">🍌</div>
+                    <h3>Red Banana Milk</h3>
+                    <p>Natural Energy & Nutrition</p>
+                </div>
+                <div class="benefit-big-body">
+                    <ul class="benefit-list">
+                        <li>Rich in potassium — supports heart and muscles</li>
+                        <li>Natural mood enhancer with vitamin B6</li>
+                        <li>Provides quick, sustained natural energy</li>
+                        <li>Aids in sleep regulation with natural tryptophan</li>
+                        <li>Strengthens immune system with antioxidants</li>
+                        <li>Improves digestion and reduces constipation</li>
+                        <li>Great for kids as a natural sweet health drink</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="benefit-big-card">
+                <div class="benefit-big-header" style="background: linear-gradient(135deg,#1e1b4b,#312e81);">
+                    <div class="big-icon">🍫</div>
+                    <h3>Sprouted Ragi Chocolate</h3>
+                    <p>Calcium-Rich Kids Favourite</p>
+                </div>
+                <div class="benefit-big-body">
+                    <ul class="benefit-list">
+                        <li>Sprouted ragi is one of the best sources of calcium</li>
+                        <li>Supports strong bone and teeth development in kids</li>
+                        <li>High dietary fiber keeps tummy full and happy</li>
+                        <li>Natural iron content helps prevent anemia</li>
+                        <li>Amino acids support growth and cell repair</li>
+                        <li>Controls blood sugar — good for diabetic families</li>
+                        <li>Dark chocolate adds antioxidants and delicious taste</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="benefit-big-card">
+                <div class="benefit-big-header" style="background: linear-gradient(135deg,#78350f,#92400e);">
+                    <div class="big-icon">🧈</div>
+                    <h3>Pure Cow Ghee</h3>
+                    <p>Liquid Gold — Ancient Superfood</p>
+                </div>
+                <div class="benefit-big-body">
+                    <ul class="benefit-list">
+                        <li>Traditional bilona method preserves all nutrients</li>
+                        <li>Butyric acid supports gut health and digestion</li>
+                        <li>Rich in fat-soluble vitamins A, D, E, and K2</li>
+                        <li>Boosts brain function and memory</li>
+                        <li>Anti-inflammatory — reduces joint pain</li>
+                        <li>Strengthens immunity with conjugated linoleic acid</li>
+                        <li>Nourishes skin and hair from within</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUTRIENTS -->
+    <section class="nutrients-section">
+        <div class="nutrients-inner">
+            <div class="section-header">
+                <div class="section-tag">⚗️ Key Nutrients</div>
+                <h2>Nutrients You Get in Every Product</h2>
+                <p>Our products are naturally packed with essential vitamins and minerals</p>
+            </div>
+            <div class="nutrients-grid">
+                <div class="nutrient-card"><div class="nutrient-emoji">🅰️</div><h4>Vitamin A</h4><p>Eye health & immunity</p></div>
+                <div class="nutrient-card"><div class="nutrient-emoji">💊</div><h4>Vitamin B6 & B3</h4><p>Energy & brain health</p></div>
+                <div class="nutrient-card"><div class="nutrient-emoji">🍋</div><h4>Vitamin C</h4><p>Immunity & skin glow</p></div>
+                <div class="nutrient-card"><div class="nutrient-emoji">☀️</div><h4>Vitamin D & K</h4><p>Bone strength</p></div>
+                <div class="nutrient-card"><div class="nutrient-emoji">🩸</div><h4>Iron</h4><p>Blood health & energy</p></div>
+                <div class="nutrient-card"><div class="nutrient-emoji">🦴</div><h4>Calcium</h4><p>Bones & teeth</p></div>
+                <div class="nutrient-card"><div class="nutrient-emoji">💪</div><h4>Protein</h4><p>Muscle repair & growth</p></div>
+                <div class="nutrient-card"><div class="nutrient-emoji">🌿</div><h4>Antioxidants</h4><p>Cell protection</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUMBERS -->
+    <section class="health-numbers">
+        <div class="section-header">
+            <div class="section-tag">📊 By The Numbers</div>
+            <h2>Why Healthy Families Trust Us</h2>
+        </div>
+        <div class="numbers-grid">
+            <div class="number-card"><div class="big-num">500+</div><p>Happy & healthy customers</p></div>
+            <div class="number-card"><div class="big-num">44</div><p>Ingredients in Health Mix</p></div>
+            <div class="number-card"><div class="big-num">0%</div><p>Artificial preservatives</p></div>
+            <div class="number-card"><div class="big-num">100%</div><p>Natural organic ingredients</p></div>
+        </div>
+    </section>
+
+    <div style="text-align:center; padding: 3rem 5%;">
+        <button class="btn btn-primary" onclick="navigateTo('shop')" style="font-size:1.05rem; padding: 1rem 2.5rem;">Shop All Products 🛍️</button>
+    </div>
+</div>
+
+<!-- ================================================================
+     HOW WE MAKE PAGE
+================================================================ -->
+<div class="page" id="howmade">
+    <section class="howmake-hero">
+        <div class="section-tag" style="background:rgba(255,255,255,0.15); color:#fde68a;">🏭 Our Process</div>
+        <h1>How We Make Our Products</h1>
+        <p>Every product goes through a careful, hygienic, and love-filled process to ensure the highest quality reaches your home.</p>
+    </section>
+
+    <section class="process-section">
+        <div class="section-header">
+            <div class="section-tag">🔍 Step by Step</div>
+            <h2>Our Production Process</h2>
+            <p>From farm to your table — completely transparent</p>
+        </div>
+        <div class="process-timeline">
+            <div class="process-step">
+                <div class="process-step-num">1</div>
+                <div class="process-step-content">
+                    <div class="step-icon-big">🌾</div>
+                    <h3>Sourcing the Best Organic Ingredients</h3>
+                    <p>We begin by carefully selecting organic fruits, vegetables, grains, nuts, and spices from trusted local farmers. Every ingredient is personally inspected to ensure it's fresh, natural, and free from chemicals or pesticides.</p>
+                    <div class="tags"><span class="tag">Organic Farms</span><span class="tag">Local Sourcing</span><span class="tag">Chemical-Free</span><span class="tag">Freshness Checked</span></div>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">2</div>
+                <div class="process-step-content">
+                    <div class="step-icon-big">🧹</div>
+                    <h3>Thorough Cleaning & Preparation</h3>
+                    <p>All raw ingredients undergo multiple rounds of thorough cleaning with purified water. Fruits and vegetables are washed, peeled, and sorted carefully. Grains and seeds are cleaned, sorted, and dried to remove any impurities before processing.</p>
+                    <div class="tags"><span class="tag">Purified Water</span><span class="tag">Multi-Stage Cleaning</span><span class="tag">Hand-sorted</span></div>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">3</div>
+                <div class="process-step-content">
+                    <div class="step-icon-big">🌞</div>
+                    <h3>Natural Drying & Sun-Drying</h3>
+                    <p>Fruits and vegetables are naturally sun-dried or carefully dehydrated at low temperatures to preserve all their natural nutrients, vitamins, and enzymes. We never use high-heat processing that destroys nutritional value.</p>
+                    <div class="tags"><span class="tag">Sun-Dried</span><span class="tag">Low Temperature</span><span class="tag">Nutrients Preserved</span></div>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">4</div>
+                <div class="process-step-content">
+                    <div class="step-icon-big">⚙️</div>
+                    <h3>Grinding & Blending</h3>
+                    <p>The dried ingredients are stone-ground or cold-milled to a fine powder, preserving their natural oils and nutrients. Each product recipe is mixed in precise quantities to ensure a perfect balance of nutrition and taste in every batch.</p>
+                    <div class="tags"><span class="tag">Stone Ground</span><span class="tag">Cold Milled</span><span class="tag">Precise Recipe</span><span class="tag">Natural Oils Intact</span></div>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">5</div>
+                <div class="process-step-content">
+                    <div class="step-icon-big">🔬</div>
+                    <h3>Quality Testing</h3>
+                    <p>Every batch is quality-checked before packaging. We test for freshness, aroma, consistency, and taste. Our team ensures that every packet meets RN Foods' high standards. Only perfect batches are approved for packaging.</p>
+                    <div class="tags"><span class="tag">Batch Testing</span><span class="tag">Aroma Check</span><span class="tag">Consistency Check</span><span class="tag">Taste Approved</span></div>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">6</div>
+                <div class="process-step-content">
+                    <div class="step-icon-big">📦</div>
+                    <h3>Hygienic Packaging & Sealing</h3>
+                    <p>Products are packed in food-grade, airtight, moisture-proof pouches in our hygienic packing unit. All staff wear gloves, masks, and hairnets. Packages are sealed and labelled with manufacturing date and best-before information.</p>
+                    <div class="tags"><span class="tag">Food-Grade Pouches</span><span class="tag">Airtight Seal</span><span class="tag">Hygienic Unit</span><span class="tag">Labelled Properly</span></div>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="process-step-num">7</div>
+                <div class="process-step-content">
+                    <div class="step-icon-big">🚚</div>
+                    <h3>Safe Delivery to Your Home</h3>
+                    <p>Each order is carefully packed with bubble wrap and secure outer packaging for safe transit. We ship with trusted courier partners to ensure your products arrive fresh, intact, and on time. Your health is our delivery promise.</p>
+                    <div class="tags"><span class="tag">Secure Packing</span><span class="tag">Trusted Couriers</span><span class="tag">On-Time Delivery</span><span class="tag">Freshness Guaranteed</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="certifications">
+        <div class="cert-inner">
+            <div class="section-header">
+                <div class="section-tag">✅ Our Standards</div>
+                <h2>Quality We Stand Behind</h2>
+                <p>Our commitments that never change</p>
+            </div>
+            <div class="cert-grid">
+                <div class="cert-card"><div class="cert-icon">🌿</div><h4>Zero Preservatives</h4><p>No artificial preservatives, colors, or flavors. Ever.</p></div>
+                <div class="cert-card"><div class="cert-icon">🧪</div><h4>No Artificial Additives</h4><p>Only natural sweeteners like nattu sakkarai (country sugar) used.</p></div>
+                <div class="cert-card"><div class="cert-icon">🏠</div><h4>Hygienic Kitchen</h4><p>Prepared in a clean, sanitized environment following food safety norms.</p></div>
+                <div class="cert-card"><div class="cert-icon">💚</div><h4>Organic Ingredients</h4><p>Sourced from certified organic farms with no chemical fertilizers.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEY INGREDIENTS -->
+    <section class="ingredients-section">
+        <div class="section-header">
+            <div class="section-tag">🌱 Pure Ingredients</div>
+            <h2>Star Ingredients We Use</h2>
+            <p>Every ingredient chosen for a reason — for your health</p>
+        </div>
+        <div class="ingredients-grid">
+            <div class="ingredient-card"><div class="ingredient-emoji">🍎</div><div class="ingredient-info"><h4>Apple (Dried)</h4><p>Rich in fiber and Vitamin C. Supports immunity and digestion.</p></div></div>
+            <div class="ingredient-card"><div class="ingredient-emoji">🥕</div><div class="ingredient-info"><h4>Carrot (Dried)</h4><p>Packed with beta-carotene for eye health and glowing skin.</p></div></div>
+            <div class="ingredient-card"><div class="ingredient-emoji">🌰</div><div class="ingredient-info"><h4>Almonds (Badam)</h4><p>Healthy fats, Vitamin E, and protein for brain and body.</p></div></div>
+            <div class="ingredient-card"><div class="ingredient-emoji">🥜</div><div class="ingredient-info"><h4>Cashew Nuts</h4><p>Magnesium and zinc for immunity and healthy metabolism.</p></div></div>
+            <div class="ingredient-card"><div class="ingredient-emoji">🫚</div><div class="ingredient-info"><h4>Nattu Sakkarai</h4><p>Traditional country sugar — natural sweetener with minerals intact.</p></div></div>
+            <div class="ingredient-card"><div class="ingredient-emoji">🫚</div><div class="ingredient-info"><h4>Cardamom (Elachi)</h4><p>Aids digestion, freshens breath, anti-inflammatory properties.</p></div></div>
+            <div class="ingredient-card"><div class="ingredient-emoji">🟤</div><div class="ingredient-info"><h4>Sprouted Ragi</h4><p>Super-grain rich in calcium, iron, and amino acids.</p></div></div>
+            <div class="ingredient-card"><div class="ingredient-emoji">🧈</div><div class="ingredient-info"><h4>Pure Cow Milk</h4><p>A2 milk from healthy cows for our traditional bilona ghee.</p></div></div>
+        </div>
+    </section>
+
+    <div style="text-align:center; padding: 3rem 5%;">
+        <button class="btn btn-primary" onclick="navigateTo('shop')" style="font-size:1.05rem; padding: 1rem 2.5rem; margin-right:1rem;">Shop Healthy Now 🛍️</button>
+        <button class="btn btn-accent" onclick="navigateTo('benefits')" style="font-size:1.05rem; padding: 1rem 2.5rem;">See All Benefits</button>
+    </div>
+</div>
+
+<!-- ================================================================
+     ABOUT PAGE
+================================================================ -->
+<div class="page" id="about">
+    <section class="about-hero">
+        <div class="section-tag" style="background:rgba(255,255,255,0.2); color:white;">🌿 Our Story</div>
+        <h1>About RN Foods</h1>
+        <p style="color:rgba(255,255,255,0.9); max-width:600px; margin:0 auto; font-size:1.1rem;">Bringing nature's goodness to your home — one healthy product at a time.</p>
+    </section>
+    <section class="about-content">
+        <div class="about-grid">
+            <div class="about-text">
+                <div class="section-tag">Our Story</div>
+                <h2>Born from a Love for Health & Purity</h2>
+                <p>RN Foods was founded with a heartfelt mission: to make pure, organic, and truly nutritious food products accessible to every family in India.</p>
+                <p>We started small — in a home kitchen with a deep respect for traditional recipes and natural ingredients. Today, we serve hundreds of happy families, but our commitment to quality has never changed.</p>
+                <p>Every product we make carries the same love and care as if we were making it for our own family. That's the RN Foods promise.</p>
+                <div style="margin-top:2rem;">
+                    <button class="btn btn-primary" onclick="navigateTo('shop')">Shop Our Products</button>
+                </div>
+            </div>
+            <div class="about-box">
+                <div class="big-em">🌾</div>
+                <h3>Organic & Hygienic</h3>
+                <p>So Pure • So Good</p>
+                <p style="font-size:0.9rem; opacity:0.8; margin-top:0.5rem;">📞 +91 9902635453</p>
+            </div>
+        </div>
+        <div class="section-header">
+            <div class="section-tag">💚 Our Values</div>
+            <h2>What We Stand For</h2>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card"><div class="step-num">✓</div><div class="step-icon">🌱</div><h3>Purity</h3><p>No shortcuts. Only the purest organic ingredients make it into our products.</p></div>
+            <div class="step-card"><div class="step-num">✓</div><div class="step-icon">❤️</div><h3>Love</h3><p>Each product is crafted with genuine care and passion for your family's health.</p></div>
+            <div class="step-card"><div class="step-num">✓</div><div class="step-icon">🤝</div><h3>Trust</h3><p>We build lasting relationships with our customers through honest quality.</p></div>
+            <div class="step-card"><div class="step-num">✓</div><div class="step-icon">♻️</div><h3>Sustainability</h3><p>Supporting local farmers and sustainable farming practices always.</p></div>
+        </div>
+    </section>
+</div>
+
+<!-- ================================================================
+     CART PAGE
+================================================================ -->
+<div class="page" id="cart">
+    <div class="cart-page-content">
+        <h1>🛒 Your Cart</h1>
+        <div id="cartContent"></div>
+    </div>
+</div>
+
+<!-- ================================================================
+     CHECKOUT PAGE
+================================================================ -->
+<div class="page" id="checkout">
+    <div class="cart-page-content">
+        <h1>✅ Checkout</h1>
+        <div class="checkout-grid">
+            <div class="checkout-form">
+                <h3>📦 Delivery Information</h3>
+                <form id="checkoutForm" onsubmit="return false;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" id="custName" required placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" id="custPhone" required pattern="[0-9]{10}" placeholder="10-digit number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" id="custEmail" required placeholder="you@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Address *</label>
+                        <textarea id="custAddress" rows="3" required placeholder="House no, street, area..."></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>City *</label>
+                            <input type="text" id="custCity" required placeholder="City">
+                        </div>
+                        <div class="form-group">
+                            <label>Pincode *</label>
+                            <input type="text" id="custPincode" required pattern="[0-9]{6}" placeholder="6-digit pincode">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>State *</label>
+                        <select id="custState" required>
+                            <option value="">Select State</option>
+                            <option>Tamil Nadu</option><option>Karnataka</option>
+                            <option>Kerala</option><option>Andhra Pradesh</option>
+                            <option>Telangana</option><option>Maharashtra</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="payment-method-box">
+                        <h4>💳 Payment — Google Pay (UPI)</h4>
+                        <p>You will be redirected to Google Pay to complete your payment. Your order is confirmed <strong>only after successful payment</strong>. Please do not close the app during payment.</p>
+                    </div>
+                </form>
+            </div>
+            <div class="cart-summary">
+                <h3>Order Summary</h3>
+                <div id="checkoutSummary"></div>
+                <button class="btn btn-primary" onclick="proceedToPayment()">Proceed to Pay →</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================
+     SUCCESS PAGE
+================================================================ -->
+<div class="page" id="success">
+    <div class="success-page">
+        <div class="success-icon-ring">✓</div>
+        <h1>Order Confirmed! 🎉</h1>
+        <p style="color:var(--gray); margin-top:0.5rem;">Thank you! Your payment was successful and your order is placed.</p>
+        <div class="order-details-box" id="orderDetails"></div>
+        <div class="success-note">
+            📧 A confirmation will be sent to your email.<br>
+            📱 Our team will contact you on WhatsApp for delivery updates.<br>
+            📞 Questions? Call us: <strong>+91 9902635453</strong>
+        </div>
+        <button class="btn btn-primary" onclick="navigateTo('home')">Continue Shopping 🛍️</button>
+    </div>
+</div>
+
+<!-- ================================================================
+     PAYMENT MODAL
+================================================================ -->
+<div class="modal" id="paymentModal">
+    <div class="modal-content">
+        <div class="modal-icon">💳</div>
+        <h2>Complete Your Payment</h2>
+        <div class="modal-amount">₹<span id="modalAmount">0</span></div>
+        <p>Scan the QR code or use UPI ID below to pay via Google Pay</p>
+        <div class="qr-container">
+            <div class="qr-placeholder">📱</div>
+            <p>Scan QR or pay to UPI ID:</p>
+            <div class="upi-id">rnfoods@upi</div>
+        </div>
+        <button class="gpay-btn" onclick="redirectToGPay()">
+            <span style="font-weight:800; font-size:1.1rem;">G</span> Pay with Google Pay
+        </button>
+        <div class="modal-warning">
+            ⚠️ Complete payment in GPay first, then click <strong>"I've Paid — Confirm Order"</strong> below.
+            Your order is confirmed only after you click Confirm.
+        </div>
+        <div class="modal-buttons">
+            <button class="btn-confirm" onclick="confirmPayment()">✓ I've Paid — Confirm Order</button>
+            <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast">✓ Added to cart!</div>
+
+<!-- ================================================================
+     FOOTER
+================================================================ -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-section">
+            <div class="footer-logo">RN Foods</div>
+            <p>Organic & Hygienic malts and health products. Pure, natural, and homemade quality you can trust. Proudly serving families across India.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <a onclick="navigateTo('home')">Home</a>
+            <a onclick="navigateTo('shop')">Shop</a>
+            <a onclick="navigateTo('benefits')">Health Benefits</a>
+            <a onclick="navigateTo('howmade')">How We Make</a>
+            <a onclick="navigateTo('about')">About Us</a>
+        </div>
+        <div class="footer-section">
+            <h4>Our Products</h4>
+            <a onclick="navigateTo('shop')">ABC Malt</a>
+            <a onclick="navigateTo('shop')">Beetroot Malt</a>
+            <a onclick="navigateTo('shop')">Carrot Malt</a>
+            <a onclick="navigateTo('shop')">Protein Health Mix</a>
+            <a onclick="navigateTo('shop')">Cow Ghee</a>
+        </div>
+        <div class="footer-section">
+            <h4>Contact Us</h4>
+            <div class="footer-contact-item">📞 +91 9902635453</div>
+            <div class="footer-contact-item">📧 rnfoods@gmail.com</div>
+            <div class="footer-contact-item">📍 Tamil Nadu, India</div>
+            <div class="footer-contact-item">🕐 Mon–Sat: 9am – 7pm</div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 RN Foods — Organic & Hygienic Products. All rights reserved. | Proudly Made in Tamil Nadu 🌿</p>
+    </div>
+</footer>
+
+<script>
+    // ===== PRODUCTS DATA =====
+    const products = [
+        { id:1, name:"ABC Malt", emoji:"🍎", price:250, oldPrice:300, desc:"Apple, beetroot, carrot, nattu sakkarai, nuts, badam, cashew, elachi", badge:"BESTSELLER" },
+        { id:2, name:"Beetroot Malt", emoji:"🟣", price:220, oldPrice:270, desc:"Beetroot extract, country sugar, badam, cashew nuts, dates, elachi", badge:"IRON RICH" },
+        { id:3, name:"Carrot Malt", emoji:"🥕", price:220, oldPrice:270, desc:"Carrot extract, country sugar, almonds, walnuts, pistachios, cardamom", badge:"POPULAR" },
+        { id:4, name:"Protein Rich Health Mix", emoji:"🌾", price:280, oldPrice:350, desc:"44 power ingredients — rich in protein, vitamins B6, B3, K, C and E", badge:"44 INGREDIENTS" },
+        { id:5, name:"Red Banana Milk", emoji:"🍌", price:240, oldPrice:290, desc:"Premium red banana powder mix — natural energy and nutrition booster", badge:"NATURAL" },
+        { id:6, name:"Sprouted Ragi Chocolate", emoji:"🍫", price:260, oldPrice:320, desc:"Sprouted ragi with chocolate — calcium-rich, perfect for kids & adults", badge:"KIDS LOVE" },
+        { id:7, name:"Pure Cow Ghee", emoji:"🧈", price:550, oldPrice:650, desc:"100% pure cow ghee — traditional bilona method, organic & hygienic", badge:"PREMIUM" }
+    ];
+
+    let cart = [];
+
+    // ===== NAVIGATION =====
+    function navigateTo(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        const target = document.getElementById(pageId);
+        if (!target) return;
+        target.classList.add('active');
+
+        document.querySelectorAll('.nav-links a[data-page]').forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`[data-page="${pageId}"]`);
+        if (active) active.classList.add('active');
+
+        document.getElementById('navLinks').classList.remove('open');
+        document.getElementById('hamburger').classList.remove('active');
+        window.scrollTo({top: 0, behavior: 'smooth'});
+
+        if (pageId === 'cart') renderCart();
+        if (pageId === 'checkout') renderCheckoutSummary();
+        window.location.hash = pageId;
+    }
+
+    // ===== RENDER PRODUCTS =====
+    function renderProducts(containerId, list) {
+        const el = document.getElementById(containerId);
+        if (!el) return;
+        el.innerHTML = list.map(p => `
+            <div class="product-card">
+                <div class="product-image">
+                    ${p.emoji}
+                    <div class="product-badge">${p.badge}</div>
+                </div>
+                <div class="product-info">
+                    <h3>${p.name}</h3>
+                    <p class="desc">${p.desc}</p>
+                    <div class="product-price">
+                        <span class="price-now">₹${p.price}</span>
+                        <span class="price-old">₹${p.oldPrice}</span>
+                        <span class="discount">${Math.round((1-p.price/p.oldPrice)*100)}% OFF</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="addToCart(${p.id})">Add to Cart 🛒</button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // ===== CART =====
+    function addToCart(id) {
+        const p = products.find(x => x.id === id);
+        const ex = cart.find(x => x.id === id);
+        if (ex) { ex.qty++; } else { cart.push({...p, qty:1}); }
+        updateCartCount();
+        showToast(`🛒 ${p.name} added to cart!`);
+    }
+
+    function removeFromCart(id) {
+        cart = cart.filter(x => x.id !== id);
+        updateCartCount(); renderCart();
+    }
+
+    function updateQty(id, change) {
+        const item = cart.find(x => x.id === id);
+        if (!item) return;
+        item.qty += change;
+        if (item.qty <= 0) removeFromCart(id);
+        else { updateCartCount(); renderCart(); }
+    }
+
+    function updateCartCount() {
+        const count = cart.reduce((s, x) => s + x.qty, 0);
+        document.getElementById('cartCount').textContent = count;
+    }
+
+    function getTotal() { return cart.reduce((s, x) => s + x.price * x.qty, 0); }
+    function getShipping(sub) { return sub >= 500 ? 0 : 50; }
+
+    function renderCart() {
+        const el = document.getElementById('cartContent');
+        if (!el) return;
+        if (cart.length === 0) {
+            el.innerHTML = `
+                <div class="empty-cart">
+                    <div class="empty-cart-icon">🛒</div>
+                    <h2>Your cart is empty</h2>
+                    <p>Explore our healthy organic products!</p>
+                    <button class="btn btn-primary" onclick="navigateTo('shop')">Start Shopping</button>
+                </div>`;
+            return;
+        }
+        const sub = getTotal(), ship = getShipping(sub), total = sub + ship;
+        el.innerHTML = `
+            <div class="cart-grid">
+                <div class="cart-items">
+                    ${cart.map(item => `
+                        <div class="cart-item">
+                            <div class="cart-item-img">${item.emoji}</div>
+                            <div class="cart-item-info">
+                                <h4>${item.name}</h4>
+                                <div class="price">₹${item.price} × ${item.qty} = <strong>₹${item.price*item.qty}</strong></div>
+                                <div class="qty-controls">
+                                    <button class="qty-btn" onclick="updateQty(${item.id},-1)">−</button>
+                                    <span class="qty-display">${item.qty}</span>
+                                    <button class="qty-btn" onclick="updateQty(${item.id},1)">+</button>
+                                </div>
+                            </div>
+                            <button class="remove-btn" onclick="removeFromCart(${item.id})">Remove</button>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="cart-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row"><span>Subtotal</span><span>₹${sub}</span></div>
+                    <div class="summary-row"><span>Shipping</span><span>${ship===0?'<span style="color:var(--success);font-weight:600;">FREE</span>':'₹'+ship}</span></div>
+                    <div class="summary-row total"><span>Total</span><span>₹${total}</span></div>
+                    ${ship===0?'<div class="free-ship-note">🎉 You earned free shipping!</div>':'<div class="free-ship-note">Add ₹'+(500-sub)+' more for free shipping</div>'}
+                    <button class="btn btn-primary" onclick="navigateTo(\'checkout\')">Checkout →</button>
+                </div>
+            </div>`;
+    }
+
+    function renderCheckoutSummary() {
+        if (cart.length === 0) { navigateTo('shop'); return; }
+        const sub = getTotal(), ship = getShipping(sub), total = sub + ship;
+        const el = document.getElementById('checkoutSummary');
+        if (!el) return;
+        el.innerHTML = `
+            ${cart.map(i=>`
+                <div class="summary-row"><span>${i.emoji} ${i.name} × ${i.qty}</span><span>₹${i.price*i.qty}</span></div>
+            `).join('')}
+            <div class="summary-row" style="border-top:1px solid #e5e7eb; padding-top:0.8rem; margin-top:0.5rem;">
+                <span>Subtotal</span><span>₹${sub}</span>
+            </div>
+            <div class="summary-row"><span>Shipping</span><span>${ship===0?'FREE':'₹'+ship}</span></div>
+            <div class="summary-row total"><span>Total</span><span>₹${total}</span></div>
+        `;
+    }
+
+    // ===== PAYMENT =====
+    function proceedToPayment() {
+        const form = document.getElementById('checkoutForm');
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        const sub = getTotal(), ship = getShipping(sub), total = sub + ship;
+        document.getElementById('modalAmount').textContent = total;
+        document.getElementById('paymentModal').classList.add('active');
+    }
+
+    function redirectToGPay() {
+        const sub = getTotal(), ship = getShipping(sub), total = sub + ship;
+        const name = document.getElementById('custName').value;
+        const upiId = 'rnfoods@upi';
+        const note = `RN Foods Order by ${name}`;
+        const link = `upi://pay?pa=${upiId}&pn=${encodeURIComponent('RN Foods')}&am=${total}&cu=INR&tn=${encodeURIComponent(note)}`;
+        window.location.href = link;
+        setTimeout(() => showToast('If GPay didn\'t open, please scan the QR or use UPI ID above'), 2000);
+    }
+
+    function closeModal() {
+        if (confirm('Are you sure you want to cancel the payment?')) {
+            document.getElementById('paymentModal').classList.remove('active');
+        }
+    }
+
+    function confirmPayment() {
+        const orderId = 'RN' + Date.now().toString().slice(-8);
+        const sub = getTotal(), ship = getShipping(sub), total = sub + ship;
+        const name = document.getElementById('custName').value;
+        const phone = document.getElementById('custPhone').value;
+        const email = document.getElementById('custEmail').value;
+        const addr = [
+            document.getElementById('custAddress').value,
+            document.getElementById('custCity').value,
+            document.getElementById('custState').value,
+            document.getElementById('custPincode').value
+        ].filter(Boolean).join(', ');
+
+        const el = document.getElementById('orderDetails');
+        if (el) {
+            el.innerHTML = `
+                <h3>Order Details</h3>
+                <div class="order-info-row"><strong>Order ID</strong><span>#${orderId}</span></div>
+                <div class="order-info-row"><strong>Date & Time</strong><span>${new Date().toLocaleString('en-IN')}</span></div>
+                <div class="order-info-row"><strong>Name</strong><span>${name}</span></div>
+                <div class="order-info-row"><strong>Phone</strong><span>${phone}</span></div>
+                <div class="order-info-row"><strong>Email</strong><span>${email}</span></div>
+                <div class="order-info-row"><strong>Delivery To</strong><span>${addr}</span></div>
+                <div style="margin:1rem 0 0.5rem;font-weight:600;color:var(--gray);">Items Ordered:</div>
+                ${cart.map(i=>`
+                    <div class="order-info-row" style="padding-left:0.5rem;">
+                        <span>${i.emoji} ${i.name} × ${i.qty}</span>
+                        <span>₹${i.price*i.qty}</span>
+                    </div>
+                `).join('')}
+                <div class="order-info-row order-total-row" style="border-top:2px solid #e5e7eb; margin-top:0.5rem; padding-top:0.8rem;">
+                    <span>Total Paid</span><span>₹${total}</span>
+                </div>
+                <div class="order-info-row">
+                    <strong>Payment Status</strong>
+                    <span class="paid-badge">✓ PAID via Google Pay</span>
+                </div>
+            `;
+        }
+
+        cart = [];
+        updateCartCount();
+        document.getElementById('paymentModal').classList.remove('active');
+        document.getElementById('checkoutForm').reset();
+        navigateTo('success');
+    }
+
+    // ===== TOAST =====
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ===== HAMBURGER =====
+    document.getElementById('hamburger').addEventListener('click', function() {
+        this.classList.toggle('active');
+        document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // ===== NAVBAR SCROLL =====
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ===== INIT =====
+    renderProducts('featuredProducts', products.slice(0, 3));
+    renderProducts('allProducts', products);
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const hash = window.location.hash.replace('#', '') || 'home';
+        if (document.getElementById(hash)) navigateTo(hash);
+    });
+</script>
+</body>
+</html>
